@@ -6,7 +6,7 @@ let UserScore = (props) => {
     return (
         <React.Fragment>
             <h5>Score <b>{props.userName}</b></h5>
-            <h1>5000</h1>
+            <h1>{props.gameScore}</h1>
         </React.Fragment>
     );
 }
@@ -14,6 +14,7 @@ let UserScore = (props) => {
 const mapStateToProps = state => {
     return {
         userName: state.userReducer.userName,
+        gameScore: state.userReducer.gameScore,
     };
 };
 

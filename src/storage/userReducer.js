@@ -1,5 +1,6 @@
 const initialState = {
-    userName: "Nicolás"
+    gameScore: 0,
+    userName: "Nicolás",
 }
 
 const reducer = (state = initialState, action) => {
@@ -7,7 +8,14 @@ const reducer = (state = initialState, action) => {
     if (action.type === 'changeUserName') {
         return {
             ...state,
-            userName: action.newUserName
+            userName: action.newUserName,
+        }
+    }
+
+    if (action.type === 'updateGameScore') {
+        return {
+            ...state,
+            gameScore: action.gameScore,
         }
     }
 
