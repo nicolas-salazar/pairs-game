@@ -10,7 +10,7 @@ let Instructions = (props) => {
             <hr />
             <p>
                 Ten cuidado, los clics también te quitan puntos
-                <span aria-label="" role="img">🤔</span>
+                <span aria-label="" role="img" style={{ marginLeft: 5 }}>🤔</span>
             </p>
         </div>
     );
