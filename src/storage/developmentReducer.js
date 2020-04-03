@@ -1,5 +1,5 @@
 const initialState = {
-    allowFirestoreReads: true
+    allowFirestoreReads: false
 }
 
 const reducer = (state = initialState, action) => {
