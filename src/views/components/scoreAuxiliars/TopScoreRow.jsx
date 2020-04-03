@@ -10,7 +10,7 @@ let TopScoreRow = (props) => {
             </Col>
 
             <Col xs="4" md="4" lg="4" xl="4">
-                <h6 style={{ textAlign: "left" }}><b>{props.userScore}</b></h6>
+                <h6 style={{ textAlign: "left" }}><b>{props.gameScore}</b></h6>
             </Col>
         </Row>
     );
