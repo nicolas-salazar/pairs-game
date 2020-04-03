@@ -4,6 +4,7 @@ import React from 'react';
 import Title from './scoreAuxiliars/Title';
 import UserScore from './scoreAuxiliars/UserScore';
 import Instructions from './scoreAuxiliars/Instructions';
+import TopScorePanel from './scoreAuxiliars/TopScorePanel';
 
 //Componentes transversales requeridos:
 import CustomBreak from '../../tools/components/CustomBreak';
@@ -16,11 +17,10 @@ let ScoreBoard = (props) => {
                 <Title />
             </HeightContainer>
 
-            <CustomBreak heightPercentage={5} />
-
-            <HeightContainer heightPercentage={50}>
-
+            <HeightContainer heightPercentage={50} style={{ backgroundColor: "rgb(25,25,25)" }}>
+                <TopScorePanel/>
             </HeightContainer>
+            <CustomBreak heightPercentage={5} />
 
             <HeightContainer heightPercentage={10}>
                 <UserScore />

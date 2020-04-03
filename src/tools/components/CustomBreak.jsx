@@ -4,7 +4,7 @@ let CustomBreak = (props) => {
     let fullMargin = (props.heightPercentage || 10) / 2;
 
     return (
-        <hr style={{ marginTop: fullMargin + "vh", marginBottom: fullMargin + "vh" }} />
+        <hr style={{ marginTop: fullMargin + "vh", marginBottom: fullMargin + "vh", ...props.style }} />
     );
 }
 

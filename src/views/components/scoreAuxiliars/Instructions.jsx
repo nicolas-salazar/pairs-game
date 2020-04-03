@@ -6,8 +6,11 @@ let Instructions = (props) => {
             <p>
                 {"Voltea las cartas y encuentra todas las parejas. El tiempo disminuye tu "}
                 <b>score</b> {" así que ¡date prisa!"}
-                <hr/>
-                Ten cuidado, los clics también te quitan puntos 🤔
+            </p>
+            <hr />
+            <p>
+                Ten cuidado, los clics también te quitan puntos
+                <span aria-label="" role="img">🤔</span>
             </p>
         </div>
     );
