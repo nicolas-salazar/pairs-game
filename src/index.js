@@ -13,10 +13,12 @@ import App from './App';
 //Reducers del aplicativo:
 import userReducer from './storage/userReducer';
 import backendReducer from './storage/backendReducer';
+import developmentReducer from './storage/developmentReducer';
 
 const reduxStore = combineReducers({
   userReducer: userReducer,
-  backendReducer: backendReducer
+  backendReducer: backendReducer,
+  developmentReducer: developmentReducer
 });
 const storeRedux = createStore(reduxStore);
 
