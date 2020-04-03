@@ -15,7 +15,17 @@ const animation = {
     ease: "easeInSine"
 };
 
+const cardBackImageURL = "https://i.ya-webdesign.com/images/bicycle-card-back-png-2.png";
+
 class Card extends React.Component {
+
+    constructor() {
+        super();
+
+        this.state = {
+            isTheCardFlipped: false
+        }
+    }
 
     render() {
         return (
@@ -33,16 +43,24 @@ class Card extends React.Component {
                             }]
                         }
                     }}>
-                    <img key={""} alt="" src={this.props.imageURL}
-                        onClick={() => { console.log("(" + this.props.xIndex + "," + this.props.yIndex + ")") }}
+                    <img key={""} alt="" onClick={this.onClick}
+                        src={(this.state.isTheCardFlipped) ? this.props.imageURL : cardBackImageURL}
                         style={{
-                            width: "100%", position: "absolute",
+                            width: "100%", 
+                            cursor: "pointer",
+                            position: "absolute",
                             top: -100 * this.props.yIndex,
                             left: -100 * this.props.xIndex,
                         }} />
                 </TweenOne>
             </Col >
         );
+    }
+
+    //Métodos operativos:
+    onClick = (e) => {
+        console.log("(" + this.props.xIndex + "," + this.props.yIndex + ")");
+        this.setState({ isTheCardFlipped: !this.state.isTheCardFlipped });
     }
 }
 
