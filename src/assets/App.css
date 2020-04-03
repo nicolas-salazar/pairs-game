@@ -13,6 +13,20 @@ h1 {
   text-align: center;
 }
 
+h4 {
+  color: #f0f0f0;
+  font-family: "Notable", sans-serif;
+  font-size: 26px;
+  text-align: center;
+}
+
+h5 {
+  color: #f0f0f0;
+  font-family: "Notable", sans-serif;
+  font-size: 22px;
+  text-align: center;
+}
+
 h6 {
   color: #f0f0f0;
   font-family: "Notable", sans-serif;
@@ -23,7 +37,7 @@ h6 {
 p {
   color: #b5b5b5;
   font-family: "Roboto Mono", monospace;
-  font-size: 30px;
+  font-size: 15px;
 }
 
 b {
@@ -102,7 +116,8 @@ a:hover {
 
 .app {
   background-color: #0f0f0f;
-  padding: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 /*
