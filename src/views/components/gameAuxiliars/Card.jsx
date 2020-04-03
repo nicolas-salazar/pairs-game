@@ -33,13 +33,13 @@ class Card extends React.Component {
                             }]
                         }
                     }}>
-                    <img key={""} alt="" style={{
-                        width: "100%",
-                        position: "absolute",
-                        top: -100 * this.props.yIndex,
-                        left: -100 * this.props.xIndex,
-                    }}
-                        src={"https://deckofcardsapi.com/static/img/QS.png"} />
+                    <img key={""} alt="" src={this.props.imageURL}
+                        onClick={() => { console.log("(" + this.props.xIndex + "," + this.props.yIndex + ")") }}
+                        style={{
+                            width: "100%", position: "absolute",
+                            top: -100 * this.props.yIndex,
+                            left: -100 * this.props.xIndex,
+                        }} />
                 </TweenOne>
             </Col >
         );

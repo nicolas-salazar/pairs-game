@@ -10,7 +10,6 @@ class GameScreen extends React.Component {
 
     render() {
         return (
-
             <Row>
                 <Col xs="12" md="8" lg="8" xl="8" style={{ height: "100vh", paddingRight: 0 }}>
                     <GameBoard />
@@ -20,7 +19,6 @@ class GameScreen extends React.Component {
                     <ScoreBoard />
                 </Col>
             </Row>
-
         );
     }
 }

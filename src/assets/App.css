@@ -117,7 +117,7 @@ a:hover {
   background-color: #0f0f0f;
   padding-left: 15px;
   padding-right: 15px;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 /*
