@@ -13,10 +13,22 @@ h1 {
   text-align: center;
 }
 
+h6 {
+  color: #f0f0f0;
+  font-family: "Notable", sans-serif;
+  font-size: 18px;
+  text-align: center;
+}
+
 p {
   color: #b5b5b5;
   font-family: "Roboto Mono", monospace;
   font-size: 30px;
+}
+
+b {
+  color: rgb(226,218,207);
+  font-weight: bold;
 }
 
 .button {
