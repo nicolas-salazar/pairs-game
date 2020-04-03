@@ -1,9 +1,10 @@
 import React from 'react';
 
+import { Col } from 'reactstrap';
 import TweenOne from "rc-tween-one";
 import BezierPlugin from "rc-tween-one/lib/plugin/BezierPlugin";
-TweenOne.plugins.push(BezierPlugin);
 
+TweenOne.plugins.push(BezierPlugin);
 const animation = {
     bezier: {
         type: "thru",
@@ -18,33 +19,29 @@ class Card extends React.Component {
 
     render() {
         return (
-            // <TweenOne animation={{
-            //     ...animation, duration: (1000 / 7) * 2,
-            //     bezier: {
-            //         ...animation.bezier, vars: [{
-            //             x: this.props.xIndex * (this.props.cardSize.width) + 10,
-            //             y: this.props.yIndex * (this.props.cardSize.width / 0.75) + 10
-            //         }]
-            //     },
-            // }}>
-            //     <img key={""} alt="" src={"https://deckofcardsapi.com/static/img/QS.png"}
-            //         style={{
-            //             width: this.props.cardSize.width,
-            //             height: (this.props.cardSize.width / 0.75),
-            //             position: "absolute", left: "0%", top: "0%",
-            //             paddingLeft: 5, paddingRight: 5, paddingTop: 5, paddingBottom: 5,
-            //         }} />
-            // </TweenOne>
 
-            <img key={""} alt="" src={"https://deckofcardsapi.com/static/img/QS.png"}
-                style={{
-                    width: this.props.cardSize.width,
-                    height: (this.props.cardSize.width / 0.75),
-                    position: "absolute",
-                    left: this.props.xIndex * (this.props.cardSize.width) + 0,
-                    top: this.props.yIndex * (this.props.cardSize.width / 0.75) + 10,
-                    paddingLeft: 5, paddingRight: 5, paddingTop: 5, paddingBottom: 5,
-                }} />
+            <Col xs="2" md="2" lg="2" xl="2" style={{ position: "relative" }}>
+                <TweenOne
+                    animation={{
+                        ...animation,
+                        duration: (1000 / 7) * (this.props.xIndex + 1),
+                        bezier: {
+                            ...animation.bezier,
+                            vars: [{
+                                x: 100 * this.props.xIndex,
+                                y: 100 * this.props.yIndex,
+                            }]
+                        }
+                    }}>
+                    <img key={""} alt="" style={{
+                        width: "100%",
+                        position: "absolute",
+                        top: -100 * this.props.yIndex,
+                        left: -100 * this.props.xIndex,
+                    }}
+                        src={"https://deckofcardsapi.com/static/img/QS.png"} />
+                </TweenOne>
+            </Col >
         );
     }
 }

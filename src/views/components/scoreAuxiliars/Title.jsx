@@ -2,11 +2,11 @@ import React from 'react';
 
 let Title = (props) => {
     return (
-        <div className="Header">
+        <div className="Header" style={{ paddingTop: 10 }}>
             <div className="HeaderText">
                 <h1>
                     <span role="img" aria-label="joker card">🃏</span>
-                        Pairs game
+                        Pairs
                     <span role="img" aria-label="joker card">🃏</span>
                 </h1>
             </div>

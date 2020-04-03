@@ -12,7 +12,7 @@ class GameScreen extends React.Component {
         return (
 
             <Row>
-                <Col xs="12" md="8" lg="8" xl="8" style={{ height: "100vh" }}>
+                <Col xs="12" md="8" lg="8" xl="8" style={{ height: "100vh", paddingRight: 0 }}>
                     <GameBoard />
                 </Col>
 
