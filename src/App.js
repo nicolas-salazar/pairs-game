@@ -5,7 +5,9 @@ import GameScreen from './views/GameScreen';
 
 function App() {
   return (
-    <GameScreen />
+    <div className="app">
+      <GameScreen />
+    </div>
   );
 }
 

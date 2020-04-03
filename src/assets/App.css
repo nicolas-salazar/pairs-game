@@ -87,6 +87,12 @@ a:hover {
 .aTitle:hover {
   text-decoration: none;
 }
+
+.app {
+  background-color: #0f0f0f;
+  padding: 15px;
+}
+
 /*
 font-family: 'Roboto Mono', monospace;
 font-family: 'Notable', sans-serif;

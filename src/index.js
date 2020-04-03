@@ -4,7 +4,8 @@ import * as serviceWorker from './serviceWorker';
 import App from './App';
 
 //Estilos base:
-import "./App.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import "./assets/App.css";
 
 ReactDOM.render(
   <React.StrictMode>
