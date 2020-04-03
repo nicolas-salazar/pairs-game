@@ -9,13 +9,50 @@ class GameBoard extends React.Component {
         super();
 
         this.state = {
-            cardsList: []
+            cardsDeck: []
         }
+    }
+
+    componentDidMount() {
+        let cardsDeck = [];
+
+        cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
+        cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
+        cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
+        cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
+        cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
+        cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
+        cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
+        cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
+        cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
+        cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
+        cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
+        cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
+        cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
+        cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
+        cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
+        cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
+        cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
+        cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
+        cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
+        cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
+        cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
+        cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
+        cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
+        cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
+        cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
+        cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
+        cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
+        cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
+        cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
+        cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
+
+        this.setState({cardsDeck: cardsDeck});
     }
 
     render() {
         return (
-            <CardsTable />
+            <CardsTable cardsDeck={this.state.cardsDeck} />
         );
     }
 

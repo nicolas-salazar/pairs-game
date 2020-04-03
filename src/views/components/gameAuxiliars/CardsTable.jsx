@@ -1,58 +1,25 @@
 import React from 'react';
 
+import { Row } from 'reactstrap';
+
 //Componentes auxiliares:
 import Card from './Card';
-import { Row } from 'reactstrap';
 
 let cardsByRow = 6;
 let cardsByColumn = 5;
 
-// "https://deckofcardsapi.com/static/img/QS.png"
-
 let CardsTable = (props) => {
 
     let topPadding = 15;
-    let cardsDeck = [];
-
-    cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
-    cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
-    cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
-    cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
-    cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
-    cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
-    cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
-    cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
-    cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
-    cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
-    cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
-    cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
-    cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
-    cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
-    cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
-    cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
-    cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
-    cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
-    cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
-    cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
-    cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
-    cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
-    cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
-    cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
-    cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
-    cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
-    cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
-    cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
-    cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
-    cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
 
     return (
         <div style={{ padding: topPadding, height: "100vh" }}>
-            {getCardsDeckRendered(props, cardsDeck)}
+            {getCardsDeckRendered(props.cardsDeck || [], props)}
         </div>
     );
 }
 
-let getCardsRowRendered = (props, cardsDeck) => {
+let getCardsRowRendered = (cardsDeck, props) => {
     return (
         cardsDeck.map((card, i) => {
             return (
@@ -63,7 +30,7 @@ let getCardsRowRendered = (props, cardsDeck) => {
     );
 }
 
-let getCardsDeckRendered = (props, cardsDeck) => {
+let getCardsDeckRendered = (cardsDeck, props) => {
 
     let cardsRowsRendered = [];
     let cardsDeckAsMatrix = transformCardsDeckInMatrix(cardsDeck);
@@ -81,7 +48,7 @@ let getCardsDeckRendered = (props, cardsDeck) => {
         cardsRowsRendered.push(
             <Row style={{ padding: 5, height: "20%" }}
                 key={"rowOfCards." + i + "." + (new Date()).getSeconds()}>
-                {getCardsRowRendered(props, cardsForThisRow)}
+                {getCardsRowRendered(cardsForThisRow, props)}
             </Row>
         );
     }
