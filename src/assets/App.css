@@ -9,35 +9,34 @@ html {
 h1 {
   color: #f0f0f0;
   font-family: "Notable", sans-serif;
-  font-size: 36px;
+  font-size: 4.5vh;
   text-align: center;
 }
 
 h4 {
   color: #f0f0f0;
   font-family: "Notable", sans-serif;
-  font-size: 26px;
+  font-size: 3.25vh;
   text-align: center;
 }
 
 h5 {
   color: #f0f0f0;
   font-family: "Notable", sans-serif;
-  font-size: 22px;
+  font-size: 2.75vh;
   text-align: center;
 }
 
 h6 {
   color: #f0f0f0;
   font-family: "Notable", sans-serif;
-  font-size: 18px;
   text-align: center;
 }
 
 p {
   color: #b5b5b5;
   font-family: "Roboto Mono", monospace;
-  font-size: 15px;
+  font-size: 1.5vh;
 }
 
 b {
@@ -118,6 +117,7 @@ a:hover {
   background-color: #0f0f0f;
   padding-left: 15px;
   padding-right: 15px;
+  overflow-x: hidden;
 }
 
 /*
