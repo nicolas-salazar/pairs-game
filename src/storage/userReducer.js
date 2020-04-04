@@ -1,6 +1,6 @@
 const initialState = {
     gameScore: 500,
-    theGameIsOver: true,
+    theGameIsOver: false,
     gameStartDate: new Date()
 }
 
