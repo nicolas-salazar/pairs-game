@@ -15,7 +15,7 @@ const animation = {
     ease: "easeInSine"
 };
 
-const cardBackImageURL = "https://i.ya-webdesign.com/images/bicycle-card-back-png-2.png";
+const cardBackImageURL = "assets/card-back.png";
 
 class Card extends React.Component {
 
