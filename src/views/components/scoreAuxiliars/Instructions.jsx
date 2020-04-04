@@ -4,7 +4,7 @@ let Instructions = (props) => {
     return (
         <div style={{ textAlign: "center" }}>
             <p>
-                {"Voltea las cartas y encuentra todas las parejas. El tiempo disminuye tu "}
+                {"Voltea las cartas y encuentra todas las parejas. Un tiempo bajo aumenta tu "}
                 <b>score</b> {" así que ¡date prisa!"}
             </p>
             <hr />
