@@ -1,18 +1,10 @@
 const initialState = {
     gameScore: 500,
-    userName: "Nicolás",
-    theGameIsOver: false,
+    theGameIsOver: true,
     gameStartDate: new Date()
 }
 
 const reducer = (state = initialState, action) => {
-
-    if (action.type === 'changeUserName') {
-        return {
-            ...state,
-            userName: action.newUserName,
-        }
-    }
 
     if (action.type === 'updateGameScore') {
         let newGameScore = action.newGameScore;

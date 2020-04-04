@@ -1,14 +1,23 @@
 import React from 'react';
 
+import { connect } from "react-redux";
+
 //Componentes auxiliares:
+import GameOver from './views/GameOver';
 import GameScreen from './views/GameScreen';
 
-function App() {
+let App = (props) => {
   return (
     <div className="app">
-      <GameScreen />
+      {(!props.theGameIsOver) ? <GameScreen /> : <GameOver />}
     </div>
   );
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    theGameIsOver: state.userReducer.theGameIsOver,
+  };
+};
+
+export default connect(mapStateToProps)(App);
