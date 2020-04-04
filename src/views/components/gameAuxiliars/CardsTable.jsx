@@ -27,7 +27,7 @@ class CardsTable extends React.Component {
             cardsDeck: [],
             onClickWorks: true,
             shouldAnimateCards: true,
-            activeTry: {code: undefined,index: undefined}
+            activeTry: { code: undefined, index: undefined }
         }
     }
 
@@ -134,11 +134,11 @@ class CardsTable extends React.Component {
 
         if(this.state.activeTry.index !== undefined){
             if (this.state.activeTry.code === targetCard.code) {
-                this.fireActionsWhenScoring(targetCard);
+                if (this.state.activeTry.index !== targetCard.originalIndex) {
+                    this.fireActionsWhenScoring(targetCard);
+                }
             }
-            else {
-                this.fireActionsWhenFailing(targetCard);
-            }
+            else { this.fireActionsWhenFailing(targetCard); }
         }
     }
 
