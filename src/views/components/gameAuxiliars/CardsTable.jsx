@@ -8,71 +8,85 @@ import Card from './Card';
 let cardsByRow = 6;
 let cardsByColumn = 5;
 
-let CardsTable = (props) => {
+class CardsTable extends React.Component {
+    constructor() {
+        super();
 
-    let topPadding = 15;
+        this.state = {
 
-    return (
-        <div style={{ padding: topPadding, height: "100vh" }}>
-            {getCardsDeckRendered(props.cardsDeck || [], props)}
-        </div>
-    );
-}
-
-let getCardsRowRendered = (cardsDeck, props) => {
-    return (
-        cardsDeck.map((card, i) => {
-            return (
-                <Card xIndex={card.xIndex} yIndex={card.yIndex} imageURL={card.imageURL}
-                    key={"card." + card.xIndex + "." + card.yIndex + "." + (new Date()).getSeconds()} />
-            );
-        })
-    );
-}
-
-let getCardsDeckRendered = (cardsDeck, props) => {
-
-    let cardsRowsRendered = [];
-    let cardsDeckAsMatrix = transformCardsDeckInMatrix(cardsDeck);
-
-    for (let i = 0; i < cardsDeckAsMatrix.length && i < cardsByColumn; i++) {
-
-        let cardsForThisRow = [];
-
-        for (let k = 0; k < cardsDeckAsMatrix[i].length; k++) {
-            cardsDeckAsMatrix[i][k].xIndex = i;
-            cardsDeckAsMatrix[i][k].yIndex = k;
-            cardsForThisRow.push(cardsDeckAsMatrix[i][k]);
         }
+    }
 
-        cardsRowsRendered.push(
-            <Row style={{ padding: 5, height: "20%" }}
-                key={"rowOfCards." + i + "." + (new Date()).getSeconds()}>
-                {getCardsRowRendered(cardsForThisRow, props)}
-            </Row>
+    render() {
+        return (
+            <div style={{ padding: 15, height: "100vh" }}>
+                {this.getCardsDeckRendered(this.props.cardsDeck || [])}
+            </div>
         );
     }
 
-    return cardsRowsRendered;
-}
+    //Métodos de renderizado:
+    getCardsDeckRendered = (cardsDeck) => {
 
-let transformCardsDeckInMatrix = (cardsDeck) => {
-    let setOfRows = [];
+        let cardsRowsRendered = [];
+        let cardsDeckAsMatrix = this.transformCardsDeckInMatrix(cardsDeck);
 
-    let columnsAccounter = 0;
-    let setOfTemporalCells = [];
+        for (let i = 0; i < cardsDeckAsMatrix.length && i < cardsByColumn; i++) {
 
-    for (let i = 0; i < cardsDeck.length; i++) {
-        columnsAccounter++;
-        setOfTemporalCells.push(cardsDeck[i]);
+            let cardsForThisRow = [];
 
-        if (columnsAccounter >= cardsByRow) {
-            setOfRows.push(setOfTemporalCells);
-            columnsAccounter = 0; setOfTemporalCells = [];
+            for (let k = 0; k < cardsDeckAsMatrix[i].length; k++) {
+                let targetCard = {
+                    xIndex: i,
+                    yIndex: k,
+                    ...cardsDeckAsMatrix[i][k]
+                };
+
+                cardsForThisRow.push(targetCard);
+            }
+
+            cardsRowsRendered.push(
+                <Row style={{ padding: 5, height: "20%" }}
+                    key={"rowOfCards." + i + "." + (new Date()).getSeconds()}>
+                    {this.getCardsRowRendered(cardsForThisRow)}
+                </Row>
+            );
         }
+
+        return cardsRowsRendered;
     }
 
-    return setOfRows;
+    getCardsRowRendered = (cardsDeck) => {
+        return (
+            cardsDeck.map((card, i) => {
+                return (
+                    <Card xIndex={card.xIndex} yIndex={card.yIndex} imageURL={card.imageURL}
+                        key={"card." + card.xIndex + "." + card.yIndex + "." + (new Date()).getSeconds()} />
+                );
+            })
+        );
+    }
+
+    //Métodos operativos:
+    transformCardsDeckInMatrix = (cardsDeck) => {
+        let setOfRows = [];
+
+        let columnsAccounter = 0;
+        let setOfTemporalCells = [];
+
+        for (let i = 0; i < cardsDeck.length; i++) {
+            columnsAccounter++;
+            setOfTemporalCells.push(cardsDeck[i]);
+
+            if (columnsAccounter >= cardsByRow) {
+                setOfRows.push(setOfTemporalCells);
+                columnsAccounter = 0; setOfTemporalCells = [];
+            }
+        }
+
+        return setOfRows;
+    }
 }
+
 
 export default CardsTable;

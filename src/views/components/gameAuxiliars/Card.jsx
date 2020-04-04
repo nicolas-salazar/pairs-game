@@ -23,7 +23,7 @@ class Card extends React.Component {
         super();
 
         this.state = {
-            isTheCardFlipped: true
+            showCard: false
         }
     }
 
@@ -46,7 +46,7 @@ class Card extends React.Component {
                         }
                     }}>
                     <img key={""} alt="" onClick={this.onClick}
-                        src={(this.state.isTheCardFlipped) ? this.props.imageURL : cardBackImageURL}
+                        src={(this.state.showCard) ? this.props.imageURL : cardBackImageURL}
                         style={{
                             width: "100%", 
                             cursor: "pointer",
@@ -62,7 +62,7 @@ class Card extends React.Component {
     //Métodos operativos:
     onClick = (e) => {
         console.log("(" + this.props.xIndex + "," + this.props.yIndex + ")");
-        this.setState({ isTheCardFlipped: !this.state.isTheCardFlipped });
+        this.setState({ showCard: !this.state.showCard });
     }
 }
 

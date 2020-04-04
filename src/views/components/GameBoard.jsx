@@ -65,8 +65,6 @@ class GameBoard extends React.Component {
         }
     }
 
-    //Métodos de renderizado:
-
     //Métodos operativos:
     getCardsContainerFromApi = () => {
         return (
