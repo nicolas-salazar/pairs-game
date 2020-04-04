@@ -2,7 +2,7 @@ import React from 'react';
 
 let Title = (props) => {
     return (
-        <div className="Header" style={{ paddingTop: 10 }}>
+        <div className="Header" style={{ marginTop: 10 }}>
             <div className="HeaderText">
                 <h1>
                     <span role="img" aria-label="joker card">🃏</span>
