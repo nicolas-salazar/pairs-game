@@ -14,7 +14,7 @@ let pointsWhenPairing = 500;
 let pairsFoundForWinning = 15;
 
 //Constantes para fines de desarrollo:
-let showTableViaConsole = false;
+let showTableViaConsole = true;
 let showCardsForDevelopment = false;
 
 class CardsTable extends React.Component {
