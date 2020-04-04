@@ -11,6 +11,7 @@ let cardsByRow = 6;
 let cardsByColumn = 5;
 let pointsWhenFailing = 10;
 let pointsWhenPairing = 500;
+let pairsFoundForWinning = 15;
 
 //Constantes para fines de desarrollo:
 let showTableViaConsole = true;
@@ -22,6 +23,7 @@ class CardsTable extends React.Component {
         super();
 
         this.state = {
+            pairsFound: 14,
             cardsDeck: [],
             onClickWorks: true,
             shouldAnimateCards: true,
@@ -85,6 +87,35 @@ class CardsTable extends React.Component {
     }
 
     //Métodos operativos:
+    fireActionsWhenFailing = (targetCard) => {
+        let newCardsDeck = [...this.state.cardsDeck];
+        newCardsDeck[targetCard.originalIndex].showCard = true;
+
+        this.setState({
+            onClickWorks: false,
+            cardsDeck: newCardsDeck,
+            activeTry: { index: undefined, code: undefined },
+        });
+
+        this.setHiddenOnAllCardsAfterTimeout();
+        this.props.updateGameScore(this.props.gameScore - pointsWhenFailing);
+    }
+    
+    fireActionsWhenScoring = (targetCard) => {
+        
+        let previousPairsFound = this.state.pairsFound;
+        
+        this.setState({
+            pairsFound: previousPairsFound + 1,
+            activeTry: { index: undefined, code: undefined },
+            cardsDeck: this.setFoundOnTargetCard(this.state.cardsDeck, targetCard.code)
+        });
+
+        this.props.updateGameScore(this.props.gameScore + pointsWhenPairing);
+        
+        if (previousPairsFound + 1 === pairsFoundForWinning) {this.props.setGameOver();}
+    }
+
     fireTry = (e,targetCard) => {
         if (this.state.activeTry.index === undefined) {
             let newActiveTry = { index: targetCard.originalIndex, code: targetCard.code }
@@ -103,27 +134,10 @@ class CardsTable extends React.Component {
 
         if(this.state.activeTry.index !== undefined){
             if (this.state.activeTry.code === targetCard.code) {
-                //Puntua!
-                this.setState({
-                    activeTry: { index: undefined, code: undefined },
-                    cardsDeck: this.setFoundOnTargetCard(this.state.cardsDeck, targetCard.code)
-                });
-
-                this.props.updateGameScore(this.props.gameScore + pointsWhenPairing);
+                this.fireActionsWhenScoring(targetCard);
             }
             else {
-                //Muestro la carta y luego, tras un segundo, la oculto
-                let newCardsDeck = [...this.state.cardsDeck];
-                newCardsDeck[targetCard.originalIndex].showCard = true;
-
-                this.setState({ 
-                    onClickWorks: false,
-                    cardsDeck: newCardsDeck,
-                    activeTry: { index: undefined, code: undefined },
-                });
-
-                this.setHiddenOnAllCardsAfterTimeout();
-                this.props.updateGameScore(this.props.gameScore - pointsWhenFailing);
+                this.fireActionsWhenFailing(targetCard);
             }
         }
     }
@@ -174,6 +188,7 @@ class CardsTable extends React.Component {
 
 const mapDispachToProps = dispach => {
     return {
+        setGameOver: () => dispach({ type: "setGameOver" }),
         updateGameScore: (newGameScore) => dispach({ type: "updateGameScore", newGameScore: newGameScore })
     };
 };

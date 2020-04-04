@@ -1,7 +1,8 @@
 const initialState = {
     gameScore: 500,
     userName: "Nicolás",
-    theGameIsOver: false
+    theGameIsOver: false,
+    gameStartDate: new Date()
 }
 
 const reducer = (state = initialState, action) => {
@@ -24,9 +25,10 @@ const reducer = (state = initialState, action) => {
     }
 
     if (action.type === 'setGameOver') {
+        console.log('Game over');
         return {
             ...state,
-            theGameIsOver: action.theGameIsOver,
+            theGameIsOver: true,
         }
     }
 
