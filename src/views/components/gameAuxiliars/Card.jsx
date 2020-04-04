@@ -17,53 +17,37 @@ const animation = {
 
 const cardBackImageURL = "assets/card-back.png";
 
-class Card extends React.Component {
-
-    constructor() {
-        super();
-
-        this.state = {
-            showCard: false
-        }
-    }
-
-    render() {
-
-        console.log(this.props);
-
-        return (
-            <Col xs="2" md="2" lg="2" xl="2" style={{ position: "relative" }}>
-                <TweenOne
-                    animation={{
-                        ...animation,
-                        duration: (1000 / 7) * (this.props.xIndex + 1),
-                        bezier: {
-                            ...animation.bezier,
-                            vars: [{
-                                x: 100 * this.props.xIndex,
-                                y: 100 * this.props.yIndex,
-                            }]
-                        }
-                    }}>
-                    <img key={""} alt="" onClick={this.onClick}
-                        src={(this.state.showCard) ? this.props.imageURL : cardBackImageURL}
-                        style={{
-                            width: "100%", 
-                            cursor: "pointer",
-                            position: "absolute",
-                            top: -100 * this.props.yIndex,
-                            left: -100 * this.props.xIndex,
-                        }} />
-                </TweenOne>
-            </Col >
-        );
-    }
-
-    //Métodos operativos:
-    onClick = (e) => {
-        console.log("(" + this.props.xIndex + "," + this.props.yIndex + ")");
-        this.setState({ showCard: !this.state.showCard });
-    }
+let Card = (props) => {
+    return (
+        <Col xs="2" md="2" lg="2" xl="2" style={{ position: "relative" }}>
+            <TweenOne
+                animation={{
+                    ...animation,
+                    duration: (1000 / 7) * (props.xIndex + 1),
+                    bezier: {
+                        ...animation.bezier,
+                        vars: [{
+                            x: (props.animate) ? 100 * props.xIndex : 0,
+                            y: (props.animate) ? 100 * props.yIndex : 0,
+                        }]
+                    }
+                }}>
+                <img key={""} alt="" onClick={(e) => {
+                    if (props.onClickWorks) {
+                        props.onClick(e, props)
+                    }
+                }}
+                    className="card" src={(props.showCard || props.found) ? props.imageURL : cardBackImageURL}
+                    style={{
+                        width: "100%",
+                        cursor: "pointer",
+                        position: "absolute",
+                        top: (props.animate) ? -100 * props.yIndex : 0,
+                        left: (props.animate) ? -100 * props.xIndex : 0,
+                    }} />
+            </TweenOne>
+        </Col >
+    );
 }
 
 export default Card;

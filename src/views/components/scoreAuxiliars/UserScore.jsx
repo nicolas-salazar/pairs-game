@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 let UserScore = (props) => {
     return (
         <React.Fragment>
-            <h5>Score <b>{props.userName}</b></h5>
+            <h5>Score</h5>
             <h1>{props.gameScore}</h1>
         </React.Fragment>
     );

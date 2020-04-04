@@ -120,6 +120,14 @@ a:hover {
   overflow: hidden;
 }
 
+.card{
+  background-color: transparent;
+}
+
+.card:hover{
+  transform: scale(1.2) 
+}
+
 /*
 font-family: 'Roboto Mono', monospace;
 font-family: 'Notable', sans-serif;

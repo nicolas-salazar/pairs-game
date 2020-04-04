@@ -20,39 +20,6 @@ class GameBoard extends React.Component {
     }
 
     componentDidMount() {
-        // let cardsDeck = [];
-        // cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
-        // cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
-        // cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
-        // cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
-        // cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
-        // cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
-        // cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
-        // cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
-        // cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
-        // cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
-        // cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
-        // cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
-        // cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
-        // cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
-        // cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
-        // cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
-        // cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
-        // cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
-        // cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
-        // cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
-        // cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
-        // cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
-        // cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
-        // cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
-        // cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
-        // cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
-        // cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
-        // cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
-        // cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
-        // cardsDeck.push({ imageURL: "https://deckofcardsapi.com/static/img/QS.png" });
-        // this.setState({ cardsDeck: cardsDeck });
-
         this.setCardsDeckFromApi();
     }
 
@@ -97,14 +64,13 @@ class GameBoard extends React.Component {
                         switch (serverResponse.status) {
                             case 200:
                                 serverResponse.json().then(response => {
-                                    let customCardsDeck = response.cards.map(card => {
+                                    let customCardsDeck = response.cards.map((card,i) => {
                                         return ({
                                             code: card.code,
+                                            showCard: false,
                                             imageURL: card.image
                                         });
                                     });
-
-                                    customCardsDeck.push(...customCardsDeck)
 
                                     resolve(customCardsDeck);
                                 });
@@ -125,9 +91,21 @@ class GameBoard extends React.Component {
             .then(cardsContainer => {
                 this.getRandomCardsFromApi(cardsContainer.id)
                     .then(cardsDeck => {
+                        let sortedCardsDeck = cardsDeck;
+                        sortedCardsDeck.push(...sortedCardsDeck);
+                        sortedCardsDeck = shuffleList(sortedCardsDeck);
+
+                        let definitiveCardsDeck=[];
+                        for (let i = 0; i < sortedCardsDeck.length; i++) {
+                            let newCardDeck = { ...sortedCardsDeck[i], originalIndex: i };
+                            definitiveCardsDeck.push(newCardDeck);
+                        }
+
+                        console.log(definitiveCardsDeck);
+
                         this.setState({
                             cardsHasBeenDownloaded: true,
-                            cardsDeck: shuffleList(cardsDeck)
+                            cardsDeck: definitiveCardsDeck
                         });
                     });
             });
