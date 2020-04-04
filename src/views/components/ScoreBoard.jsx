@@ -28,7 +28,7 @@ let ScoreBoard = (props) => {
                 <UserScore />
             </HeightContainer>
 
-            <CustomBreak heightPercentage={5} />
+            <CustomBreak heightPercentage={2.5} />
 
             <HeightContainer heightPercentage={20}>
                 <Instructions />
