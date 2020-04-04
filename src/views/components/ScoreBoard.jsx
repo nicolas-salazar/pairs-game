@@ -1,5 +1,7 @@
 import React from 'react';
 
+import PerfectScrollbar from 'react-perfect-scrollbar';
+
 //Componentes auxiliares:
 import Title from './scoreAuxiliars/Title';
 import UserScore from './scoreAuxiliars/UserScore';
@@ -17,9 +19,9 @@ let ScoreBoard = (props) => {
                 <Title />
             </HeightContainer>
 
-            <HeightContainer heightPercentage={50} style={{ backgroundColor: "rgb(25,25,25)" }}>
-                <TopScorePanel/>
-            </HeightContainer>
+            <PerfectScrollbar style={{ backgroundColor: "rgb(25,25,25)", maxHeight: "50vh" }}>
+                <TopScorePanel />
+            </PerfectScrollbar>
             <CustomBreak heightPercentage={5} />
 
             <HeightContainer heightPercentage={10}>

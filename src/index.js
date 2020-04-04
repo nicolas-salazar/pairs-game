@@ -6,6 +6,7 @@ import { createStore, combineReducers } from 'redux';
 
 //Estilos base:
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'react-perfect-scrollbar/dist/css/styles.css';
 import "./assets/App.css";
 
 import App from './App';
