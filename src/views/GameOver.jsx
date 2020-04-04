@@ -16,7 +16,7 @@ let GameOver = (props) => {
             </HeightContainer>
 
             <CustomBreak heightPercentage={10} />
-            <HeightContainer heightPercentage={50}>
+            <HeightContainer heightPercentage={80}>
                 <UserFinalScore />
             </HeightContainer>
 

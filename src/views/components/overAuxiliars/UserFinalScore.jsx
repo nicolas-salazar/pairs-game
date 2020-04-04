@@ -2,25 +2,36 @@ import React from 'react';
 
 import { connect } from "react-redux";
 
+//Componentes auxiliares:
+import ScoreSenderForm from './ScoreSenderForm';
+
 let UserFinalScore = (props) => {
+
+    let finalScore = getFinalScore(props);
+
     return (
         <React.Fragment>
             <h1><b>¡Has ganado!</b></h1>
             <h5 style={{ marginTop: "15vh" }}>Tu score:</h5>
-            <h1><b>{getFinalScore(props)}</b></h1>
+            <h1><b>{finalScore}</b></h1>
 
             <h6 style={{ marginTop: "3vh" }}>
                 {"Tardaste " + Math.round(getSpentTimeInSeconds(props.gameStartDate)) + " segundos"}
             </h6>
+
+            <ScoreSenderForm finalScore={finalScore} />
         </React.Fragment>
     );
 }
 
 let getFinalScore = (props) => {
-    let totalScore = props.gameScore;
-    let timeSpentInSeconds = getSpentTimeInSeconds(props.gameStartDate);
+    try {
+        let totalScore = props.gameScore;
+        let timeSpentInSeconds = getSpentTimeInSeconds(props.gameStartDate);
 
-    return (Math.round(totalScore * getScoreMultiplierViaMathFunction(timeSpentInSeconds)));
+        return (Math.round(totalScore * getScoreMultiplierViaMathFunction(timeSpentInSeconds)));
+    }
+    catch (error) { return 10 }
 }
 
 let getScoreMultiplierViaMathFunction = (timeSpentInSeconds) => {
