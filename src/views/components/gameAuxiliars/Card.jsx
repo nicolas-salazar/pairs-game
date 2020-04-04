@@ -4,6 +4,9 @@ import { Col } from 'reactstrap';
 import TweenOne from "rc-tween-one";
 import BezierPlugin from "rc-tween-one/lib/plugin/BezierPlugin";
 
+//Componentes auxiliares: 
+import HiddenImage from './HiddenImage';
+
 TweenOne.plugins.push(BezierPlugin);
 const animation = {
     bezier: {
@@ -46,6 +49,8 @@ let Card = (props) => {
                         left: (props.animate) ? -100 * props.xIndex : 0,
                     }} />
             </TweenOne>
+
+            <HiddenImage {...props} />
         </Col >
     );
 }
