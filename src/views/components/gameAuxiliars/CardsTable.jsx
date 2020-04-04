@@ -9,6 +9,7 @@ let cardsByRow = 6;
 let cardsByColumn = 5;
 
 class CardsTable extends React.Component {
+    
     constructor() {
         super();
 
