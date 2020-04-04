@@ -15,7 +15,7 @@ class GameScreen extends React.Component {
                     <GameBoard />
                 </Col>
 
-                <Col xs="12" md="4" lg="4" xl="4">
+                <Col xs="12" md="4" lg="4" xl="4" style={{ marginTop: 25 }}>
                     <ScoreBoard />
                 </Col>
             </Row>

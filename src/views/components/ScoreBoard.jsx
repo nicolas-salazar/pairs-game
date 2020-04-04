@@ -22,7 +22,7 @@ let ScoreBoard = (props) => {
             <PerfectScrollbar style={{ backgroundColor: "rgb(25,25,25)", maxHeight: "50vh" }}>
                 <TopScorePanel />
             </PerfectScrollbar>
-            <CustomBreak heightPercentage={5} />
+            <CustomBreak heightPercentage={2.5} />
 
             <HeightContainer heightPercentage={10}>
                 <UserScore />
