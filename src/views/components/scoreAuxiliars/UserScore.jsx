@@ -3,6 +3,7 @@ import React from 'react';
 import { connect } from "react-redux";
 
 let UserScore = (props) => {
+    console.log(props.gameScore);
     return (
         <React.Fragment>
             <h5>Score</h5>

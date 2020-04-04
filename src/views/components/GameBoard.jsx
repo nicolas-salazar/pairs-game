@@ -101,8 +101,6 @@ class GameBoard extends React.Component {
                             definitiveCardsDeck.push(newCardDeck);
                         }
 
-                        console.log(definitiveCardsDeck);
-
                         this.setState({
                             cardsHasBeenDownloaded: true,
                             cardsDeck: definitiveCardsDeck

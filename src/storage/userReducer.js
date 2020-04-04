@@ -1,6 +1,7 @@
 const initialState = {
-    gameScore: 0,
+    gameScore: 500,
     userName: "Nicolás",
+    theGameIsOver: false
 }
 
 const reducer = (state = initialState, action) => {
@@ -13,9 +14,19 @@ const reducer = (state = initialState, action) => {
     }
 
     if (action.type === 'updateGameScore') {
+        let newGameScore = action.newGameScore;
+        if (newGameScore < 0) newGameScore = 0;
+
         return {
             ...state,
-            gameScore: action.gameScore,
+            gameScore: newGameScore,
+        }
+    }
+
+    if (action.type === 'setGameOver') {
+        return {
+            ...state,
+            theGameIsOver: action.theGameIsOver,
         }
     }
 

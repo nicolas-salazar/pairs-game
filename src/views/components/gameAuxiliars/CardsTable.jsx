@@ -1,12 +1,19 @@
 import React from 'react';
 
 import { Row } from 'reactstrap';
+import { connect } from "react-redux";
 
 //Componentes auxiliares:
 import Card from './Card';
 
+//Constantes auxiliares:
 let cardsByRow = 6;
 let cardsByColumn = 5;
+let pointsWhenFailing = 10;
+let pointsWhenPairing = 500;
+
+//Constantes para fines de desarrollo:
+let showTableViaConsole = true;
 let showCardsForDevelopment = false;
 
 class CardsTable extends React.Component {
@@ -85,7 +92,7 @@ class CardsTable extends React.Component {
             let newCardsDeck = [...this.state.cardsDeck];
             newCardsDeck[targetCard.originalIndex].showCard = true;
 
-            console.table(newCardsDeck);
+            if (showTableViaConsole) console.table(newCardsDeck);
 
             this.setState({
                 cardsDeck: newCardsDeck,
@@ -101,6 +108,8 @@ class CardsTable extends React.Component {
                     activeTry: { index: undefined, code: undefined },
                     cardsDeck: this.setFoundOnTargetCard(this.state.cardsDeck, targetCard.code)
                 });
+
+                this.props.updateGameScore(this.props.gameScore + pointsWhenPairing);
             }
             else {
                 //Muestro la carta y luego, tras un segundo, la oculto
@@ -114,6 +123,7 @@ class CardsTable extends React.Component {
                 });
 
                 this.setHiddenOnAllCardsAfterTimeout();
+                this.props.updateGameScore(this.props.gameScore - pointsWhenFailing);
             }
         }
     }
@@ -149,6 +159,7 @@ class CardsTable extends React.Component {
             setOfTemporalCells.push({
                 ...cardsDeck[i],
                 originalIndex: i,
+                showCard: showCardsForDevelopment || cardsDeck[i].showCard
             });
 
             if (columnsAccounter >= cardsByRow) {
@@ -161,5 +172,16 @@ class CardsTable extends React.Component {
     }
 }
 
+const mapDispachToProps = dispach => {
+    return {
+        updateGameScore: (newGameScore) => dispach({ type: "updateGameScore", newGameScore: newGameScore })
+    };
+};
 
-export default CardsTable;
+const mapStateToProps = state => {
+    return {
+        gameScore: state.userReducer.gameScore
+    };
+};
+
+export default connect(mapStateToProps, mapDispachToProps)(CardsTable);
