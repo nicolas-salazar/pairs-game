@@ -46,16 +46,18 @@ let ScoreSenderForm = (props) => {
 let formSubmit = (e, props) => {
     e.preventDefault();
 
-    firestoreDB.collection("userScores").add({
-        gameScore: props.finalScore,
-        userName: e.target.nickname.value
-    })
-        .then(() => {
-            window.location.reload();
+    if (e.target.nickname.value) {
+        firestoreDB.collection("userScores").add({
+            gameScore: props.finalScore,
+            userName: e.target.nickname.value
         })
-        .catch(error => {
-            console.log(error);
-        });
+            .then(() => {
+                window.location.reload();
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    }
 }
 
 export default ScoreSenderForm;
