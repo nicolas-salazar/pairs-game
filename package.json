@@ -7,7 +7,7 @@
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "bootstrap": "^4.4.1",
-    "firebase": "^7.13.2",
+    "firebase": "^10.9.0",
     "radium": "^0.26.0",
     "rc-tween-one": "^2.6.8",
     "react": "^16.13.1",
